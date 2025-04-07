@@ -36,6 +36,7 @@ src/gz openwrt_luci https://mirrors.aliyun.com/openwrt/releases/24.10.0/packages
 src/gz openwrt_packages https://mirrors.aliyun.com/openwrt/releases/24.10.0/packages/x86_64/packages
 src/gz openwrt_routing https://mirrors.aliyun.com/openwrt/releases/24.10.0/packages/x86_64/routing
 src/gz openwrt_telephony https://mirrors.aliyun.com/openwrt/releases/24.10.0/packages/x86_64/telephony
+src/gz kmod https://raw.githubusercontent.com/oppen321/openwrt-kmod/main/x86_64/v24.10.0
 EOF
 
 # samba4
