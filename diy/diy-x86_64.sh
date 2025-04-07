@@ -205,8 +205,7 @@ document.addEventListener("DOMContentLoaded", addLinks);
 EOF
 
 # feeds 
-rm -rf feeds.conf.default
-cat << 'EOF' >> feeds.conf.default
+cat <<EOF > feeds.conf.default
 src-git packages https://github.com/openwrt/packages.git^201fd099b80a2931b7326ce20b0cbb824296c99f
 src-git luci https://github.com/openwrt/luci.git^7b0663a5557118499dc3b3d44550efc1b6fa3feb
 src-git routing https://github.com/openwrt/routing.git^e87b55c6a642947ad7e24cd5054a637df63d5dbe
