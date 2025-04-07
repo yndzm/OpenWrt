@@ -204,6 +204,15 @@ document.addEventListener("DOMContentLoaded", addLinks);
 </script>
 EOF
 
+# feeds 
+rm -rf feeds.conf.default
+cat << 'EOF' >> feeds.conf.default
+src-git packages https://github.com/openwrt/packages.git^201fd099b80a2931b7326ce20b0cbb824296c99f
+src-git luci https://github.com/openwrt/luci.git^7b0663a5557118499dc3b3d44550efc1b6fa3feb
+src-git routing https://github.com/openwrt/routing.git^e87b55c6a642947ad7e24cd5054a637df63d5dbe
+src-git telephony https://github.com/openwrt/telephony.git^fd605af7143165a2490681ec1752f259873b9147
+EOF
+
 # istoreos
 sed -i 's/iStoreOS/ZeroWrt/' package/openwrt-package/istoreos-files/files/etc/board.d/10_system
 sed -i 's/192.168.100.1/10.0.0.1/' package/openwrt-package/istoreos-files/Makefile
