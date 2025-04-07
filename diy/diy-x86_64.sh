@@ -38,6 +38,7 @@ src/gz openwrt_routing https://mirrors.aliyun.com/openwrt/releases/24.10.0/packa
 src/gz openwrt_telephony https://mirrors.aliyun.com/openwrt/releases/24.10.0/packages/x86_64/telephony
 src/gz openwrt_core https://raw.githubusercontent.com/oppen321/openwrt_core/main/x86_64/v24.10.0
 src/gz openwrt_extras https://raw.githubusercontent.com/oppen321/openwrt_extras/main/x86_64/package
+src/gz openwrt_helloworld https://raw.githubusercontent.com/oppen321/openwrt_extras/main/x86_64/helloworld
 EOF
 
 # samba4
