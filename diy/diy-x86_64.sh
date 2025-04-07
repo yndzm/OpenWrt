@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", addLinks);
 </script>
 EOF
 
-sed -i "s|_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || '')|_('Firmware Version'), 'ZeroWrt-VIP-R25.04.6-K6.6.83'|" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+sed -i 's|_('"'"'Firmware Version'"'"', \(L\.isObject(boardinfo\.release\) ? boardinfo\.release\.description \+ " / " : ""\) \+ \(luciversion \|\| ""\))|_('"'"'Firmware Version'"'"', "ZeroWrt-VIP-R25.04.6-K6.6.83")|' feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 # istoreos
 sed -i 's/iStoreOS/ZeroWrt/' package/openwrt-package/istoreos-files/files/etc/board.d/10_system
