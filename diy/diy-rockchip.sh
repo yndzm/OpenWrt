@@ -69,7 +69,7 @@ git clone --depth=1 -b kernel-6.6 https://github.com/oppen321/OpenWrt-Patch
 wget -qO - https://raw.githubusercontent.com/oppen321/OpenWrt-Patch/refs/heads/kernel-6.6/kernel/0003-include-kernel-defaults.mk.patch | patch -p1
 
 # 更换为 ImmortalWrt Uboot 以及 Target
-git clone -b openwrt-24.10 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
+git clone -b v24.10.0 --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt
 rm -rf target/linux/rockchip
 cp -rf immortalwrt/target/linux/rockchip target/linux/rockchip
 cp -rf OpenWrt-Patch/rockchip/* ./target/linux/rockchip/patches-6.6/
@@ -88,7 +88,7 @@ sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
 
 # default-settings
-git clone --depth=1 -b openwrt-24.10 https://github.com/oppen321/default-settings package/default-settings
+git clone --depth=1 -b aarch64 https://github.com/oppen321/default-settings package/default-settings
 
 # Luci diagnostics.js
 sed -i "s/openwrt.org/www.qq.com/g" feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/diagnostics.js
