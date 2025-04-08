@@ -196,10 +196,6 @@ rm -rf feeds/packages/net/{alist,zerotier,xray-core,v2ray-core,v2ray-geodata,sin
 # golong1.24依赖
 git clone --depth=1 -b 24.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
-##添加自己的插件库
-sed -i "1isrc-git helloworld https://github.com/oppen321/openwrt-package.git;helloworld\n" feeds.conf.default
-sed -i "2isrc-git extraipk https://github.com/oppen321/openwrt-package.git;v24.10\n" feeds.conf.default
-
 # banner
 cp -f feeds/extraipk/banner  package/base-files/files/etc/banner
 
