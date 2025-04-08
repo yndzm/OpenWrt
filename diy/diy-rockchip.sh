@@ -166,14 +166,12 @@ rm -rf feeds/packages/net/{alist,zerotier,xray-core,v2ray-core,v2ray-geodata,sin
 # golong1.24依赖
 git clone --depth=1 -b 24.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
-# helloworld
-git clone --depth=1 -b helloworld https://github.com/oppen321/openwrt-package package/helloworld
-
-# 加载软件源
-git clone --depth=1 https://github.com/oppen321/openwrt-package package/openwrt-package
+##添加自己的插件库
+sed -i "1isrc-git helloworld https://github.com/oppen321/openwrt-package.git;helloworld\n" feeds.conf.default
+sed -i "2isrc-git extraipk https://github.com/oppen321/openwrt-package.git;v24.10\n" feeds.conf.default
 
 # banner
-cp -f package/openwrt-package/banner  package/base-files/files/etc/banner
+cp -f feeds/extraipk/banner  package/base-files/files/etc/banner
 
 # Docker
 rm -rf feeds/luci/applications/luci-app-dockerman
@@ -206,12 +204,12 @@ sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='ZeroWrt-$(date +%Y%m%d)
 sed -i "s/DISTRIB_REVISION='*.*'/DISTRIB_REVISION=' By OPPEN321'/g" package/base-files/files/etc/openwrt_release
 
 # 主题设置
-sed -i 's/bing/none/' package/openwrt-package/luci-app-argon-config/root/etc/config/argon
-curl -L https://git.kejizero.online/zhao/files/raw/branch/main/images/bg1.jpg -o package/openwrt-package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-sed -i 's#<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /#<a class="luci-link" href="https://www.kejizero.online" target="_blank">探索无限</a> /#' package/openwrt-package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a href="https://github.com/oppen321/ZeroWrt-Action" target="_blank">ZeroWrt-Action</a> |g' package/openwrt-package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i 's#<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /#<a class="luci-link" href="https://www.kejizero.online" target="_blank">探索无限</a> /#' package/openwrt-package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a href="https://github.com/oppen321/ZeroWrt-Action" target="_blank">ZeroWrt-Action</a> |g' package/openwrt-package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
+sed -i 's/bing/none/' feeds/extraipk/luci-app-argon-config/root/etc/config/argon
+curl -L https://git.kejizero.online/zhao/files/raw/branch/main/images/bg1.jpg -o feeds/extraipk/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+sed -i 's#<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /#<a class="luci-link" href="https://www.kejizero.online" target="_blank">探索无限</a> /#' feeds/extraipk/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a href="https://github.com/oppen321/ZeroWrt-Action" target="_blank">ZeroWrt-Action</a> |g' feeds/extraipk/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i 's#<a class="luci-link" href="https://github.com/openwrt/luci" target="_blank">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /#<a class="luci-link" href="https://www.kejizero.online" target="_blank">探索无限</a> /#' feeds/extraipk/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
+sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a href="https://github.com/oppen321/ZeroWrt-Action" target="_blank">ZeroWrt-Action</a> |g' feeds/extraipk/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 
 # 版本设置
 cat << 'EOF' >> feeds/luci/modules/luci-mod-status/ucode/template/admin_status/index.ut
@@ -232,8 +230,8 @@ document.addEventListener("DOMContentLoaded", addLinks);
 EOF
 
 # istoreos
-sed -i 's/iStoreOS/ZeroWrt/' package/openwrt-package/istoreos-files/files/etc/board.d/10_system
-sed -i 's/192.168.100.1/10.0.0.1/' package/openwrt-package/istoreos-files/Makefile
+sed -i 's/iStoreOS/ZeroWrt/' feeds/extraipk/istoreos-files/files/etc/board.d/10_system
+sed -i 's/192.168.100.1/10.0.0.1/' feeds/extraipk/istoreos-files/Makefile
 
 # kmod
 curl -s https://downloads.immortalwrt.org/releases/24.10.0/targets/x86/64/immortalwrt-24.10.0-x86-64.manifest \
