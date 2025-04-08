@@ -126,6 +126,12 @@ CONFIG_LRNG_SELFTEST=y
 # OTHERS
 cp -rf OpenWrt-Patch/others/* ./target/linux/generic/pending-6.6/
 
+# igc-fix
+cp -rf OpenWrt-Patch/igc-fix/* ./target/linux/x86/patches-6.6/
+
+# btf
+cp -rf OpenWrt-Patch/btf/* ./target/linux/generic/hack-6.6/
+
 # arm64 型号名称
 cp -rf OpenWrt-Patch/arm/* ./target/linux/generic/hack-6.6/
 
