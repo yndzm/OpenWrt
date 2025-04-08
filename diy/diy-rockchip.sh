@@ -230,6 +230,9 @@ document.addEventListener("DOMContentLoaded", addLinks);
 </script>
 EOF
 
+# feeds 
+sed -i 's|https://git.openwrt.org/feed/|https://github.com/openwrt/|g' feeds.conf.default
+
 # istoreos
 sed -i 's/iStoreOS/ZeroWrt/' feeds/extraipk/istoreos-files/files/etc/board.d/10_system
 sed -i 's/192.168.100.1/10.0.0.1/' feeds/extraipk/istoreos-files/Makefile
