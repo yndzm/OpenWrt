@@ -101,6 +101,31 @@ sed -i '3 a\\t\t"order": 50,' feeds/luci/applications/luci-app-ttyd/root/usr/sha
 sed -i 's/procd_set_param stdout 1/procd_set_param stdout 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/utils/ttyd/files/ttyd.init
 
+# TCP optimizations
+cp -rf OpenWrt-Patch/Boost_For_Single_TCP_Flow/* ./target/linux/generic/backport-6.6/
+cp -rf OpenWrt-Patch/Boost_TCP_Performance_For_Many_Concurrent_Connections-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
+cp -rf OpenWrt-Patch/Better_data_locality_in_networking_fast_paths-bp_but_put_in_hack/* ./target/linux/generic/hack-6.6/
+
+# UDP optimizations
+cp -rf OpenWrt-Patch/FQ_packet_scheduling/* ./target/linux/generic/backport-6.6/
+
+# LRNG
+cp -rf OpenWrt-Patch/lrng/* ./target/linux/generic/hack-6.6/
+echo '
+# CONFIG_RANDOM_DEFAULT_IMPL is not set
+CONFIG_LRNG=y
+CONFIG_LRNG_DEV_IF=y
+# CONFIG_LRNG_IRQ is not set
+CONFIG_LRNG_JENT=y
+CONFIG_LRNG_CPU=y
+# CONFIG_LRNG_SCHED is not set
+CONFIG_LRNG_SELFTEST=y
+# CONFIG_LRNG_SELFTEST_PANIC is not set
+' >>./target/linux/generic/config-6.6
+
+# OTHERS
+cp -rf OpenWrt-Patch/others/* ./target/linux/generic/pending-6.6/
+
 # arm64 型号名称
 cp -rf OpenWrt-Patch/arm/* ./target/linux/generic/hack-6.6/
 
