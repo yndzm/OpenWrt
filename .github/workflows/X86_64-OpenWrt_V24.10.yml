@@ -100,7 +100,6 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
-        ##添加自己的插件库
         sed -i "1isrc-git helloworld https://github.com/oppen321/openwrt-package.git;helloworld\n" feeds.conf.default
         sed -i "2isrc-git extraipk https://github.com/oppen321/openwrt-package.git;v24.10\n" feeds.conf.default
         ./scripts/feeds update -a
