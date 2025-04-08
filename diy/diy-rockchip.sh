@@ -81,8 +81,6 @@ cp -rf immortalwrt/package/boot/arm-trusted-firmware-rockchip package/boot/arm-t
 sed -i '/REQUIRE_IMAGE_METADATA/d' target/linux/rockchip/armv8/base-files/lib/upgrade/platform.sh
 rm -rf immortalwrt
 
-curl -L -o include/kernel-6.6 https://raw.githubusercontent.com/immortalwrt/immortalwrt/refs/heads/openwrt-24.10/include/kernel-6.6
-
 # default LAN IP
 sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
 
