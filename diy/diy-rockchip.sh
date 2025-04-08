@@ -263,7 +263,7 @@ sed -i 's/iStoreOS/ZeroWrt/' feeds/extraipk/istoreos-files/files/etc/board.d/10_
 sed -i 's/192.168.100.1/10.0.0.1/' feeds/extraipk/istoreos-files/Makefile
 
 # kmod
-curl -s https://downloads.immortalwrt.org/releases/24.10.0/targets/x86/64/immortalwrt-24.10.0-x86-64.manifest \
+curl -s https://downloads.immortalwrt.org/releases/24.10.0/targets/rockchip/armv8/immortalwrt-24.10.0-rockchip-armv8.manifest \
 | grep "^kernel -" \
 | awk '{print $3}' \
 | sed -n 's/.*~\([a-f0-9]\+\)-r[0-9]\+/\1/p' > vermagic
