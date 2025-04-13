@@ -138,6 +138,7 @@ sed -i '/CONFIG_BUILDBOT/d' include/feeds.mk
 sed -i 's/;)\s*\\/; \\/' include/feeds.mk
 
 # 替换软件包
+rm -rf package/openwrt-package/5G-Modem-Support/rooter/0routerspecfic/rd05a1
 rm -rf feeds/packages/lang/golang
 rm -rf feeds/packages/utils/coremark
 rm -rf feeds/luci/applications/luci-app-alist
